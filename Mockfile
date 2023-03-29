@@ -1,0 +1,76 @@
+sourceryCommand: ./etc/bin/sourcery
+sourceryTemplate: .build/checkouts/SwiftyMocky/Sources/SwiftyMocky/Mock.swifttemplate
+
+mocky.SwiftlaneCoreServices:
+  sources:
+    include:
+    - ./Sources/SwiftlaneCoreServices
+  output: ./Sources/SwiftlaneCoreMocks/SwiftlaneCoreServicesMocks.generated.swift
+  targets:
+  - SwiftlaneCoreServicesTests
+  testable:
+  - SwiftlaneCoreServices
+  import:
+  - Foundation
+  - PerfectRainbow
+  - SwiftlaneLogging
+  - SwiftlaneExtensions
+
+mocky.SwiftlaneLogging:
+  sources:
+    include:
+    - ./Sources/SwiftlaneLogging
+  output: ./Sources/SwiftlaneCoreMocks/SwiftlaneLoggingMocks.generated.swift
+  targets:
+  - SwiftlaneLoggingTests
+  testable:
+  - SwiftlaneLogging
+  import:
+  - Darwin
+  - Foundation
+  - PerfectRainbow
+
+mocky.SwiftlanePaths:
+  sources:
+    include:
+    - ./Sources/SwiftlanePaths
+  output: ./Sources/SwiftlaneCoreMocks/SwiftlanePathsMocks.generated.swift
+  targets:
+  - SwiftlanePathsTests
+  testable:
+  - SwiftlanePaths
+  import:
+  - Foundation
+  - PerfectRainbow
+  - SwiftlaneLogging
+  - SwiftlaneExtensions
+
+mocky.SwiftlaneShell:
+  sources:
+    include:
+    - ./Sources/SwiftlaneShell
+  output: ./Sources/SwiftlaneCoreMocks/SwiftlaneShellMocks.generated.swift
+  targets:
+  - SwiftlaneShellTests
+  testable:
+  - SwiftlaneShell
+  import:
+  - Darwin
+  - Foundation
+  - PerfectRainbow
+  - SwiftlaneLogging
+  - SwiftlanePaths
+  - SwiftlaneCoreServices
+  - SwiftlaneExtensions
+
+mocky.SwiftlaneExtensions:
+  sources:
+    include:
+    - ./Sources/SwiftlaneExtensions
+  output: ./Sources/SwiftlaneCoreMocks/SwiftlaneExtensionsMocks.generated.swift
+  targets:
+  - SwiftlaneExtensionsTests
+  testable:
+  - SwiftlaneExtensions
+  import:
+  - Foundation
