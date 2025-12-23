@@ -15,6 +15,7 @@ mocky.SwiftlaneCoreServices:
   - PerfectRainbow
   - SwiftlaneLogging
   - SwiftlaneExtensions
+  - SwiftyMockyXCTest
 
 mocky.SwiftlaneLogging:
   sources:
@@ -29,6 +30,7 @@ mocky.SwiftlaneLogging:
   - Darwin
   - Foundation
   - PerfectRainbow
+  - SwiftyMockyXCTest
 
 mocky.SwiftlanePaths:
   sources:
@@ -44,6 +46,7 @@ mocky.SwiftlanePaths:
   - PerfectRainbow
   - SwiftlaneLogging
   - SwiftlaneExtensions
+  - SwiftyMockyXCTest
 
 mocky.SwiftlaneShell:
   sources:
@@ -62,6 +65,7 @@ mocky.SwiftlaneShell:
   - SwiftlanePaths
   - SwiftlaneCoreServices
   - SwiftlaneExtensions
+  - SwiftyMockyXCTest
 
 mocky.SwiftlaneExtensions:
   sources:
@@ -74,3 +78,4 @@ mocky.SwiftlaneExtensions:
   - SwiftlaneExtensions
   import:
   - Foundation
+  - SwiftyMockyXCTest

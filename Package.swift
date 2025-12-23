@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
 	name: "SwiftlaneCore",
-	platforms: [.macOS(.v12)],
+	platforms: [.macOS("14.0")],
 	products: [
 		/// Umbrella target.
 		///
@@ -37,7 +37,7 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/nstmrt/PerfectRainbow", from: "4.0.2"),
-		.package(url: "https://github.com/nstmrt/SwiftyMocky.git", from: "4.1.1"),
+		.package(url: "https://github.com/swiftlane-code/SwiftyMocky", branch: "master"),
 	],
 	targets: [
 
@@ -91,7 +91,7 @@ let package = Package(
 			"SwiftlaneShell",
 			"SwiftlaneExtensions",
 			"PerfectRainbow",
-			"SwiftyMocky",
+			.product(name: "SwiftyMockyXCTest", package: "SwiftyMocky"),
 		]),
 		
 		.testTarget(name: "SwiftlaneExtensionsTests", dependencies: [

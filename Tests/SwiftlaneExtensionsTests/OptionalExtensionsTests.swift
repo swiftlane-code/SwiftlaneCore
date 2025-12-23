@@ -4,6 +4,7 @@
 
 import Foundation
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 class OptionalExtensionsTests: XCTestCase {

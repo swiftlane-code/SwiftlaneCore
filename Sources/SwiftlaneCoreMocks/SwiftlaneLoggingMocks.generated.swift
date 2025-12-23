@@ -1,14 +1,15 @@
-// Generated using Sourcery 1.8.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.3.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-// Generated with SwiftyMocky 4.1.0
-// Required Sourcery: 1.6.0
+// Generated with SwiftyMocky 4.2.1
+// Required Sourcery: 2.2.4
 
 import Darwin
 import Foundation
 import PerfectRainbow
 @testable import SwiftlaneLogging
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 // MARK: - Logging
@@ -712,6 +713,8 @@ open class LoggingMock: Logging, Mock {
 	}
 }
 
+// sourcery:end
+
 // MARK: - WinSizeReading
 
 open class WinSizeReadingMock: WinSizeReading, Mock {
@@ -908,3 +911,5 @@ open class WinSizeReadingMock: WinSizeReading, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end

@@ -6,6 +6,7 @@ import Foundation
 import SwiftlaneCoreMocks
 import SwiftlaneUnitTestTools
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 class TimeMeasurerTests: XCTestCase {

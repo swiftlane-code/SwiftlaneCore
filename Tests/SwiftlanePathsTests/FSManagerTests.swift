@@ -7,6 +7,7 @@ import SwiftlaneCoreMocks
 import SwiftlaneLogging
 import SwiftlaneUnitTestTools
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 class FSManagerTests: XCTestCase {

@@ -1,8 +1,8 @@
-// Generated using Sourcery 1.8.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.3.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-// Generated with SwiftyMocky 4.1.0
-// Required Sourcery: 1.6.0
+// Generated with SwiftyMocky 4.2.1
+// Required Sourcery: 2.2.4
 
 import Darwin
 import Foundation
@@ -13,6 +13,7 @@ import SwiftlaneLogging
 import SwiftlanePaths
 @testable import SwiftlaneShell
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 // MARK: - DispatchSourceSignalFactoring
@@ -361,6 +362,8 @@ open class DispatchSourceSignalFactoringMock: DispatchSourceSignalFactoring, Moc
 	}
 }
 
+// sourcery:end
+
 // MARK: - DispatchSourceSignalWrapping
 
 open class DispatchSourceSignalWrappingMock: DispatchSourceSignalWrapping, Mock {
@@ -614,281 +617,7 @@ open class DispatchSourceSignalWrappingMock: DispatchSourceSignalWrapping, Mock 
 	}
 }
 
-// MARK: - ProcessProtocol
-
-open class ProcessProtocolMock: ProcessProtocol, Mock {
-	public init(
-		sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst,
-		stubbing stubbingPolicy: StubbingPolicy = .wrap,
-		file: StaticString = #file,
-		line: UInt = #line
-	) {
-		SwiftyMockyTestObserver.setup()
-		self.sequencingPolicy = sequencingPolicy
-		self.stubbingPolicy = stubbingPolicy
-		self.file = file
-		self.line = line
-	}
-
-	var matcher: Matcher = .default
-	var stubbingPolicy: StubbingPolicy = .wrap
-	var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
-
-	private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
-	private var invocations: [MethodType] = []
-	private var methodReturnValues: [Given] = []
-	private var methodPerformValues: [Perform] = []
-	private var file: StaticString?
-	private var line: UInt?
-
-	public typealias PropertyStub = Given
-	public typealias MethodStub = Given
-	public typealias SubscriptStub = Given
-
-	/// Convenience method - call setupMock() to extend debug information when failure occurs
-	public func setupMock(file: StaticString = #file, line: UInt = #line) {
-		self.file = file
-		self.line = line
-	}
-
-	/// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
-	public func resetMock(_ scopes: MockScope...) {
-		let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
-		if scopes.contains(.invocation) { invocations = [] }
-		if scopes.contains(.given) { methodReturnValues = [] }
-		if scopes.contains(.perform) { methodPerformValues = [] }
-	}
-
-	public var isRunning: Bool {
-		invocations
-			.append(.p_isRunning_get); return __p_isRunning ??
-			givenGetterValue(.p_isRunning_get, "ProcessProtocolMock - stub value for isRunning was not defined")
-	}
-
-	private var __p_isRunning: Bool?
-
-	public var debugDescription: String { invocations.append(.p_debugDescription_get); return __p_debugDescription ?? givenGetterValue(
-		.p_debugDescription_get,
-		"ProcessProtocolMock - stub value for debugDescription was not defined"
-	) }
-
-	private var __p_debugDescription: String?
-
-	public var processIdentifier: Int32 { invocations.append(.p_processIdentifier_get); return __p_processIdentifier ?? givenGetterValue(
-		.p_processIdentifier_get,
-		"ProcessProtocolMock - stub value for processIdentifier was not defined"
-	) }
-
-	private var __p_processIdentifier: Int32?
-
-	public var executableURL: URL? { invocations.append(.p_executableURL_get); return __p_executableURL ?? optionalGivenGetterValue(
-		.p_executableURL_get,
-		"ProcessProtocolMock - stub value for executableURL was not defined"
-	) }
-
-	private var __p_executableURL: URL?
-
-	public var executableName: String? { invocations.append(.p_executableName_get); return __p_executableName ?? optionalGivenGetterValue(
-		.p_executableName_get,
-		"ProcessProtocolMock - stub value for executableName was not defined"
-	) }
-
-	private var __p_executableName: String?
-
-	open func interrupt() {
-		addInvocation(.m_interrupt)
-		let perform = methodPerformValue(.m_interrupt) as? () -> Void
-		perform?()
-	}
-
-	open func waitUntilExit() {
-		addInvocation(.m_waitUntilExit)
-		let perform = methodPerformValue(.m_waitUntilExit) as? () -> Void
-		perform?()
-	}
-
-	fileprivate enum MethodType {
-		case m_interrupt
-		case m_waitUntilExit
-		case p_isRunning_get
-		case p_debugDescription_get
-		case p_processIdentifier_get
-		case p_executableURL_get
-		case p_executableName_get
-
-		static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
-			switch (lhs, rhs) {
-			case (.m_interrupt, .m_interrupt): return .match
-
-			case (.m_waitUntilExit, .m_waitUntilExit): return .match
-			case (.p_isRunning_get, .p_isRunning_get): return Matcher.ComparisonResult.match
-			case (.p_debugDescription_get, .p_debugDescription_get): return Matcher.ComparisonResult.match
-			case (.p_processIdentifier_get, .p_processIdentifier_get): return Matcher.ComparisonResult.match
-			case (.p_executableURL_get, .p_executableURL_get): return Matcher.ComparisonResult.match
-			case (.p_executableName_get, .p_executableName_get): return Matcher.ComparisonResult.match
-			default: return .none
-			}
-		}
-
-		func intValue() -> Int {
-			switch self {
-			case .m_interrupt: return 0
-			case .m_waitUntilExit: return 0
-			case .p_isRunning_get: return 0
-			case .p_debugDescription_get: return 0
-			case .p_processIdentifier_get: return 0
-			case .p_executableURL_get: return 0
-			case .p_executableName_get: return 0
-			}
-		}
-
-		func assertionName() -> String {
-			switch self {
-			case .m_interrupt: return ".interrupt()"
-			case .m_waitUntilExit: return ".waitUntilExit()"
-			case .p_isRunning_get: return "[get] .isRunning"
-			case .p_debugDescription_get: return "[get] .debugDescription"
-			case .p_processIdentifier_get: return "[get] .processIdentifier"
-			case .p_executableURL_get: return "[get] .executableURL"
-			case .p_executableName_get: return "[get] .executableName"
-			}
-		}
-	}
-
-	open class Given: StubbedMethod {
-		fileprivate var method: MethodType
-
-		private init(method: MethodType, products: [StubProduct]) {
-			self.method = method
-			super.init(products)
-		}
-
-		public static func isRunning(getter defaultValue: Bool...) -> PropertyStub {
-			return Given(method: .p_isRunning_get, products: defaultValue.map { StubProduct.return($0 as Any) })
-		}
-
-		public static func debugDescription(getter defaultValue: String...) -> PropertyStub {
-			return Given(method: .p_debugDescription_get, products: defaultValue.map { StubProduct.return($0 as Any) })
-		}
-
-		public static func processIdentifier(getter defaultValue: Int32...) -> PropertyStub {
-			return Given(method: .p_processIdentifier_get, products: defaultValue.map { StubProduct.return($0 as Any) })
-		}
-
-		public static func executableURL(getter defaultValue: URL?...) -> PropertyStub {
-			return Given(method: .p_executableURL_get, products: defaultValue.map { StubProduct.return($0 as Any) })
-		}
-
-		public static func executableName(getter defaultValue: String?...) -> PropertyStub {
-			return Given(method: .p_executableName_get, products: defaultValue.map { StubProduct.return($0 as Any) })
-		}
-	}
-
-	public struct Verify {
-		fileprivate var method: MethodType
-
-		public static func interrupt() -> Verify { return Verify(method: .m_interrupt) }
-		public static func waitUntilExit() -> Verify { return Verify(method: .m_waitUntilExit) }
-		public static var isRunning: Verify { return Verify(method: .p_isRunning_get) }
-		public static var debugDescription: Verify { return Verify(method: .p_debugDescription_get) }
-		public static var processIdentifier: Verify { return Verify(method: .p_processIdentifier_get) }
-		public static var executableURL: Verify { return Verify(method: .p_executableURL_get) }
-		public static var executableName: Verify { return Verify(method: .p_executableName_get) }
-	}
-
-	public struct Perform {
-		fileprivate var method: MethodType
-		var performs: Any
-
-		public static func interrupt(perform: @escaping () -> Void) -> Perform {
-			return Perform(method: .m_interrupt, performs: perform)
-		}
-
-		public static func waitUntilExit(perform: @escaping () -> Void) -> Perform {
-			return Perform(method: .m_waitUntilExit, performs: perform)
-		}
-	}
-
-	public func given(_ method: Given) {
-		methodReturnValues.append(method)
-	}
-
-	public func perform(_ method: Perform) {
-		methodPerformValues.append(method)
-		methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
-	}
-
-	public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
-		let fullMatches = matchingCalls(method, file: file, line: line)
-		let success = count.matches(fullMatches)
-		let assertionName = method.method.assertionName()
-		let feedback: String = {
-			guard !success else { return "" }
-			return Utils.closestCallsMessage(
-				for: self.invocations.map { invocation in
-					matcher.set(file: file, line: line)
-					defer { matcher.clearFileAndLine() }
-					return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
-				},
-				name: assertionName
-			)
-		}()
-		MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
-	}
-
-	private func addInvocation(_ call: MethodType) {
-		self.queue.sync { invocations.append(call) }
-	}
-
-	private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
-		matcher.set(file: self.file, line: self.line)
-		defer { matcher.clearFileAndLine() }
-		let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
-		let matched = candidates
-			.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
-		guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
-		return product
-	}
-
-	private func methodPerformValue(_ method: MethodType) -> Any? {
-		matcher.set(file: self.file, line: self.line)
-		defer { matcher.clearFileAndLine() }
-		let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
-		return matched?.performs
-	}
-
-	private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
-		matcher.set(file: file ?? self.file, line: line ?? self.line)
-		defer { matcher.clearFileAndLine() }
-		return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
-	}
-
-	private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
-		return matchingCalls(method.method, file: file, line: line).count
-	}
-
-	private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
-		do {
-			return try methodReturnValue(method).casted()
-		} catch {
-			onFatalFailure(message)
-			Failure(message)
-		}
-	}
-
-	private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
-		do {
-			return try methodReturnValue(method).casted()
-		} catch {
-			return nil
-		}
-	}
-
-	private func onFatalFailure(_ message: String) {
-		guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
-		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
-	}
-}
+// sourcery:end
 
 // MARK: - ShellExecuting
 
@@ -1898,6 +1627,286 @@ open class ShellExecutingMock: ShellExecuting, Mock {
 	}
 }
 
+// sourcery:end
+
+// MARK: - ProcessProtocol
+
+open class ProcessProtocolMock: ProcessProtocol, Mock {
+	public init(
+		sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst,
+		stubbing stubbingPolicy: StubbingPolicy = .wrap,
+		file: StaticString = #file,
+		line: UInt = #line
+	) {
+		SwiftyMockyTestObserver.setup()
+		self.sequencingPolicy = sequencingPolicy
+		self.stubbingPolicy = stubbingPolicy
+		self.file = file
+		self.line = line
+	}
+
+	var matcher: Matcher = .default
+	var stubbingPolicy: StubbingPolicy = .wrap
+	var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+	private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+	private var invocations: [MethodType] = []
+	private var methodReturnValues: [Given] = []
+	private var methodPerformValues: [Perform] = []
+	private var file: StaticString?
+	private var line: UInt?
+
+	public typealias PropertyStub = Given
+	public typealias MethodStub = Given
+	public typealias SubscriptStub = Given
+
+	/// Convenience method - call setupMock() to extend debug information when failure occurs
+	public func setupMock(file: StaticString = #file, line: UInt = #line) {
+		self.file = file
+		self.line = line
+	}
+
+	/// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+	public func resetMock(_ scopes: MockScope...) {
+		let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+		if scopes.contains(.invocation) { invocations = [] }
+		if scopes.contains(.given) { methodReturnValues = [] }
+		if scopes.contains(.perform) { methodPerformValues = [] }
+	}
+
+	public var isRunning: Bool {
+		invocations
+			.append(.p_isRunning_get); return __p_isRunning ??
+			givenGetterValue(.p_isRunning_get, "ProcessProtocolMock - stub value for isRunning was not defined")
+	}
+
+	private var __p_isRunning: Bool?
+
+	public var debugDescription: String { invocations.append(.p_debugDescription_get); return __p_debugDescription ?? givenGetterValue(
+		.p_debugDescription_get,
+		"ProcessProtocolMock - stub value for debugDescription was not defined"
+	) }
+
+	private var __p_debugDescription: String?
+
+	public var processIdentifier: Int32 { invocations.append(.p_processIdentifier_get); return __p_processIdentifier ?? givenGetterValue(
+		.p_processIdentifier_get,
+		"ProcessProtocolMock - stub value for processIdentifier was not defined"
+	) }
+
+	private var __p_processIdentifier: Int32?
+
+	public var executableURL: URL? { invocations.append(.p_executableURL_get); return __p_executableURL ?? optionalGivenGetterValue(
+		.p_executableURL_get,
+		"ProcessProtocolMock - stub value for executableURL was not defined"
+	) }
+
+	private var __p_executableURL: URL?
+
+	public var executableName: String? { invocations.append(.p_executableName_get); return __p_executableName ?? optionalGivenGetterValue(
+		.p_executableName_get,
+		"ProcessProtocolMock - stub value for executableName was not defined"
+	) }
+
+	private var __p_executableName: String?
+
+	open func interrupt() {
+		addInvocation(.m_interrupt)
+		let perform = methodPerformValue(.m_interrupt) as? () -> Void
+		perform?()
+	}
+
+	open func waitUntilExit() {
+		addInvocation(.m_waitUntilExit)
+		let perform = methodPerformValue(.m_waitUntilExit) as? () -> Void
+		perform?()
+	}
+
+	fileprivate enum MethodType {
+		case m_interrupt
+		case m_waitUntilExit
+		case p_isRunning_get
+		case p_debugDescription_get
+		case p_processIdentifier_get
+		case p_executableURL_get
+		case p_executableName_get
+
+		static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+			switch (lhs, rhs) {
+			case (.m_interrupt, .m_interrupt): return .match
+
+			case (.m_waitUntilExit, .m_waitUntilExit): return .match
+			case (.p_isRunning_get, .p_isRunning_get): return Matcher.ComparisonResult.match
+			case (.p_debugDescription_get, .p_debugDescription_get): return Matcher.ComparisonResult.match
+			case (.p_processIdentifier_get, .p_processIdentifier_get): return Matcher.ComparisonResult.match
+			case (.p_executableURL_get, .p_executableURL_get): return Matcher.ComparisonResult.match
+			case (.p_executableName_get, .p_executableName_get): return Matcher.ComparisonResult.match
+			default: return .none
+			}
+		}
+
+		func intValue() -> Int {
+			switch self {
+			case .m_interrupt: return 0
+			case .m_waitUntilExit: return 0
+			case .p_isRunning_get: return 0
+			case .p_debugDescription_get: return 0
+			case .p_processIdentifier_get: return 0
+			case .p_executableURL_get: return 0
+			case .p_executableName_get: return 0
+			}
+		}
+
+		func assertionName() -> String {
+			switch self {
+			case .m_interrupt: return ".interrupt()"
+			case .m_waitUntilExit: return ".waitUntilExit()"
+			case .p_isRunning_get: return "[get] .isRunning"
+			case .p_debugDescription_get: return "[get] .debugDescription"
+			case .p_processIdentifier_get: return "[get] .processIdentifier"
+			case .p_executableURL_get: return "[get] .executableURL"
+			case .p_executableName_get: return "[get] .executableName"
+			}
+		}
+	}
+
+	open class Given: StubbedMethod {
+		fileprivate var method: MethodType
+
+		private init(method: MethodType, products: [StubProduct]) {
+			self.method = method
+			super.init(products)
+		}
+
+		public static func isRunning(getter defaultValue: Bool...) -> PropertyStub {
+			return Given(method: .p_isRunning_get, products: defaultValue.map { StubProduct.return($0 as Any) })
+		}
+
+		public static func debugDescription(getter defaultValue: String...) -> PropertyStub {
+			return Given(method: .p_debugDescription_get, products: defaultValue.map { StubProduct.return($0 as Any) })
+		}
+
+		public static func processIdentifier(getter defaultValue: Int32...) -> PropertyStub {
+			return Given(method: .p_processIdentifier_get, products: defaultValue.map { StubProduct.return($0 as Any) })
+		}
+
+		public static func executableURL(getter defaultValue: URL?...) -> PropertyStub {
+			return Given(method: .p_executableURL_get, products: defaultValue.map { StubProduct.return($0 as Any) })
+		}
+
+		public static func executableName(getter defaultValue: String?...) -> PropertyStub {
+			return Given(method: .p_executableName_get, products: defaultValue.map { StubProduct.return($0 as Any) })
+		}
+	}
+
+	public struct Verify {
+		fileprivate var method: MethodType
+
+		public static func interrupt() -> Verify { return Verify(method: .m_interrupt) }
+		public static func waitUntilExit() -> Verify { return Verify(method: .m_waitUntilExit) }
+		public static var isRunning: Verify { return Verify(method: .p_isRunning_get) }
+		public static var debugDescription: Verify { return Verify(method: .p_debugDescription_get) }
+		public static var processIdentifier: Verify { return Verify(method: .p_processIdentifier_get) }
+		public static var executableURL: Verify { return Verify(method: .p_executableURL_get) }
+		public static var executableName: Verify { return Verify(method: .p_executableName_get) }
+	}
+
+	public struct Perform {
+		fileprivate var method: MethodType
+		var performs: Any
+
+		public static func interrupt(perform: @escaping () -> Void) -> Perform {
+			return Perform(method: .m_interrupt, performs: perform)
+		}
+
+		public static func waitUntilExit(perform: @escaping () -> Void) -> Perform {
+			return Perform(method: .m_waitUntilExit, performs: perform)
+		}
+	}
+
+	public func given(_ method: Given) {
+		methodReturnValues.append(method)
+	}
+
+	public func perform(_ method: Perform) {
+		methodPerformValues.append(method)
+		methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+	}
+
+	public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+		let fullMatches = matchingCalls(method, file: file, line: line)
+		let success = count.matches(fullMatches)
+		let assertionName = method.method.assertionName()
+		let feedback: String = {
+			guard !success else { return "" }
+			return Utils.closestCallsMessage(
+				for: self.invocations.map { invocation in
+					matcher.set(file: file, line: line)
+					defer { matcher.clearFileAndLine() }
+					return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+				},
+				name: assertionName
+			)
+		}()
+		MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+	}
+
+	private func addInvocation(_ call: MethodType) {
+		self.queue.sync { invocations.append(call) }
+	}
+
+	private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+		matcher.set(file: self.file, line: self.line)
+		defer { matcher.clearFileAndLine() }
+		let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+		let matched = candidates
+			.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+		guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+		return product
+	}
+
+	private func methodPerformValue(_ method: MethodType) -> Any? {
+		matcher.set(file: self.file, line: self.line)
+		defer { matcher.clearFileAndLine() }
+		let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+		return matched?.performs
+	}
+
+	private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+		matcher.set(file: file ?? self.file, line: line ?? self.line)
+		defer { matcher.clearFileAndLine() }
+		return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+	}
+
+	private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+		return matchingCalls(method.method, file: file, line: line).count
+	}
+
+	private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+		do {
+			return try methodReturnValue(method).casted()
+		} catch {
+			onFatalFailure(message)
+			Failure(message)
+		}
+	}
+
+	private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+		do {
+			return try methodReturnValue(method).casted()
+		} catch {
+			return nil
+		}
+	}
+
+	private func onFatalFailure(_ message: String) {
+		guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+	}
+}
+
+// sourcery:end
+
 // MARK: - SigIntHandling
 
 open class SigIntHandlingMock: SigIntHandling, Mock {
@@ -2083,6 +2092,8 @@ open class SigIntHandlingMock: SigIntHandling, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end
 
 // MARK: - SignalConfiguring
 
@@ -2276,3 +2287,5 @@ open class SignalConfiguringMock: SignalConfiguring, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end

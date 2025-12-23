@@ -16,10 +16,8 @@ class ShellTests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		
-		Matcher.default = .init() // prevents Data Race crash
+
 		let logger = LoggingMock()
-		Matcher.default = .init() // prevents Data Race crash
 		let sigIntHandler = SigIntHandlingMock()
 		let xcodeChecker = XcodeCheckingMock()
 		filesManager = FSManagingMock()

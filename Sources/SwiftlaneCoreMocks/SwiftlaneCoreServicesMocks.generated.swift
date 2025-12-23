@@ -1,8 +1,8 @@
-// Generated using Sourcery 1.8.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.3.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-// Generated with SwiftyMocky 4.1.0
-// Required Sourcery: 1.6.0
+// Generated with SwiftyMocky 4.2.1
+// Required Sourcery: 2.2.4
 
 import Foundation
 import PerfectRainbow
@@ -10,6 +10,7 @@ import PerfectRainbow
 import SwiftlaneExtensions
 import SwiftlaneLogging
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 // MARK: - EnvironmentValueReading
@@ -512,6 +513,8 @@ open class EnvironmentValueReadingMock: EnvironmentValueReading, Mock {
 	}
 }
 
+// sourcery:end
+
 // MARK: - Exiting
 
 open class ExitingMock: Exiting, Mock {
@@ -692,6 +695,8 @@ open class ExitingMock: Exiting, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end
 
 // MARK: - ProcessInfoProtocol
 
@@ -954,6 +959,8 @@ open class ProcessInfoProtocolMock: ProcessInfoProtocol, Mock {
 	}
 }
 
+// sourcery:end
+
 // MARK: - XcodeChecking
 
 open class XcodeCheckingMock: XcodeChecking, Mock {
@@ -1131,3 +1138,5 @@ open class XcodeCheckingMock: XcodeChecking, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end

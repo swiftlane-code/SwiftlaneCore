@@ -5,6 +5,7 @@
 import Foundation
 import SwiftlaneCoreMocks
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 class EnvironmentValueReaderTests: XCTestCase {

@@ -1,12 +1,13 @@
-// Generated using Sourcery 1.8.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.3.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-// Generated with SwiftyMocky 4.1.0
-// Required Sourcery: 1.6.0
+// Generated with SwiftyMocky 4.2.1
+// Required Sourcery: 2.2.4
 
 import Foundation
 @testable import SwiftlaneExtensions
 import SwiftyMocky
+import SwiftyMockyXCTest
 import XCTest
 
 // MARK: - DateComponentsFormatting
@@ -228,3 +229,5 @@ open class DateComponentsFormattingMock: DateComponentsFormatting, Mock {
 		SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
 	}
 }
+
+// sourcery:end
